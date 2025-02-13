@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from azure_monitor import AzureMonitorAgent
-from ai_agent import ServiceOpsAIAgent
+from serviceopsai_agent import ServiceOpsAIAgent
 import logging
 
 app = Flask(__name__)
@@ -23,8 +23,20 @@ def get_metrics():
 @app.route('/api/recommendation', methods=['GET'])
 def get_recommendation():
     try:
+        # Use the agent's chat_with_ai method to analyze metrics
         metrics = azure_monitor_agent.get_metrics()
-        recommendation = ai_agent.get_openai_recommendation(metrics)
+        prompt = f"""
+        Analyze these Azure Monitor metrics and provide actionable recommendations:
+        ####
+        {metrics}
+        ####
+        Focus on:
+        1. Performance bottlenecks
+        2. Resource utilization
+        3. Error rates and issues
+        4. Optimization opportunities
+        """
+        recommendation = ai_agent.chat_with_ai(prompt)
         return jsonify({'recommendation': recommendation})
     except Exception as e:
         logger.error(f"Error analyzing metrics: {e}")
