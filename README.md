@@ -47,11 +47,15 @@ POLLING_INTERVAL=300
 python api.py
 ```
 
-5. Open the frontend:
+5. Start the frontend server:
 ```bash
 cd ../frontend
+python -m http.server 8000
 ```
-Open `index.html` in your browser or serve it using a local server.
+
+You can now access the application at:
+- Frontend: http://localhost:8000
+- Backend API: http://localhost:3000
 
 ## Usage
 
@@ -61,6 +65,14 @@ Open `index.html` in your browser or serve it using a local server.
    - Get performance insights
    - Request recommendations
    - Investigate potential issues
+
+## Development
+
+- The backend runs on Flask and serves the API endpoints
+- The frontend is a static web application that communicates with the backend API
+- CORS is enabled to allow frontend-backend communication
+- The application uses OpenAI's GPT-4 for intelligent analysis and recommendations
+- Azure Monitor integration provides real-time infrastructure metrics
 
 ## Contributing
 
