@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceOps AI Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2"></i>ServiceOps AI
+            </a>
+            <span class="navbar-text">
+                <i class="fas fa-clock me-1"></i>
+                <span id="last-updated" class="text-light"></span>
+            </span>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row g-4 p-4">
+            <!-- System Summary Card -->
+            <div class="col-12">
+                <div class="card summary-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">
+                                <i class="fas fa-chart-line me-2"></i>System Health Summary
+                            </h5>
+                            <div class="system-status">
+                                <span class="status-badge" id="overall-status">
+                                    <i class="fas fa-circle-check me-1"></i>
+                                    System Status
+                                </span>
+                            </div>
+                        </div>
+                        <div id="system-summary" class="summary-content">
+                            <!-- Summary content will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Grid -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-transparent">
+                        <h5 class="mb-0">
+                            <i class="fas fa-gauge-high me-2"></i>Infrastructure Metrics
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="metrics-grid" class="row g-4">
+                            <!-- Metrics will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="col-12">
+                <div class="card chat-card">
+                    <div class="card-header bg-transparent">
+                        <h5 class="mb-0">
+                            <i class="fas fa-comments me-2"></i>Chat with ServiceOps AI
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="chat-window" class="chat-messages">
+                            <!-- Welcome message -->
+                            <div class="chat-message ai-message">
+                                <div class="message-content">
+                                    <i class="fas fa-robot message-icon"></i>
+                                    <div class="message-text">
+                                        Hello! I'm your ServiceOps AI assistant. I'm here to help you monitor and manage your cloud infrastructure. Feel free to ask me anything about the system status, metrics, or potential issues.
+                                    </div>
+                                </div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                        <div class="chat-input-container">
+                            <div class="input-group">
+                                <input type="text" id="chat-input" class="form-control" placeholder="Ask about your infrastructure...">
+                                <button id="send-button" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i>Send
+                                </button>
+                            </div>
+                            <div class="chat-suggestions mt-2">
+                                <button class="btn btn-sm btn-outline-secondary me-2 mb-2" onclick="suggestQuestion('What is the current system status?')">
+                                    System Status
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary me-2 mb-2" onclick="suggestQuestion('Are there any potential issues to watch out for?')">
+                                    Potential Issues
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary me-2 mb-2" onclick="suggestQuestion('What are the current performance metrics?')">
+                                    Performance Metrics
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Marked for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html> 
